@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية - كريم مصطفي عبدالمعتمد رشوان</title>
+    <style>
+        /* General Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        /* Dark Mode Styling */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e4e4e4;
+        }
+        body.dark-mode .card {
+            background-color: #1e1e2e;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+        body.dark-mode ul li {
+            background-color: #2c2c3c;
+            border-right-color: #4a90e2;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Section Heading */
+        .card h2 {
+            font-size: 1.5em;
+            color: #4a90e2;
+            border-bottom: 2px solid #e6e9f2;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        /* Information List Styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9fafc;
+            border-radius: 5px;
+            border-right: 4px solid #4a90e2;
+        }
+        ul li strong {
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Floating Dark Mode Switch Styling */
+        .dark-mode-switch {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 30px;
+            background-color: #4a90e2;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        .dark-mode-switch-circle {
+            width: 24px;
+            height: 24px;
+            background-color: #fff;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        body.dark-mode .dark-mode-switch {
+            background-color: #f5a623;
+        }
+        body.dark-mode .dark-mode-switch-circle {
+            transform: translateX(30px);
+        }
+        
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .card h2 {
+                font-size: 1.3em;
+            }
+            ul li {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="dark-mode-switch" onclick="toggleDarkMode()" title="تبديل الوضع">
+        <div class="dark-mode-switch-circle"></div>
+    </div>
+
+    <div class="card">
+        <h2>المعلومات الشخصية</h2>
+        <ul>
+            <li><strong>الاسم:</strong> كريم مصطفي عبدالمعتمد رشوان</li>
+            <li><strong>الحالة الاجتماعية:</strong> أعزب</li>
+            <li><strong>تاريخ الميلاد:</strong> 20/10/1998</li>
+            <li><strong>محل الإقامة:</strong> الرياض، المملكة العربية السعودية</li>
+            <li><strong>الجنسية:</strong> مصري</li>
+            <li><strong>رقم الجوال:</strong> 0562885193</li>
+            <li><strong>البريد الإلكتروني:</strong> example@example.com</li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h2>المؤهلات العلمية</h2>
+        <ul>
+            <li>بكالوريوس تجارة، تخصص محاسبة - 2023</li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h2>الشهادات المهنية</h2>
+        <ul>
+            <li>شهادة التسويق الرقمي</li>
+            <li>شهادة محاسبة متقدمة باستخدام إكسيل</li>
+            <li>شهادة ICDL</li>
+            <li>دورة في التدقيق المالي والتحليل المالي</li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h2>الخبرات العملية</h2>
+        <ul>
+            <li>ثلاث سنوات خبرة في المبيعات والتسويق بشركة الراية</li>
+            <li>خبرة في ترويج المواد الغذائية وإدارة حساباتها المالية</li>
+            <li>خبرة في التسويق الميداني واستقطاب العملاء الجدد</li>
+            <li>خبرة في التشطيب والإشراف الهندسي في مجال المقاولات والديكور</li>
+            <li>محاسب في شركة زاد للمواد الغذائية بجمهورية مصر العربية، بإشراف على الحسابات اليومية وإعداد التقارير الشهرية</li>
+        </ul>
+    </div>
+    
+    <div class="card">
+        <h2>المهارات العملية</h2>
+        <ul>
+            <li>التعلم السريع واكتساب المهارات المالية والتقنية</li>
+            <li>التطوير الذاتي وتطوير إجراءات العمل المحاسبي</li>
+            <li>القدرة على العمل كجزء من فريق محاسبي متكامل</li>
+            <li>حسن المظهر ومهارة بناء علاقات العملاء</li>
+            <li>فهم متقدم للنظام المالي والمحاسبي والتعامل مع البرمجيات المحاسبية</li>
+            <li>مهارات التحليل المالي وإعداد التقارير الدورية</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+    }
+</script>
+
+</body>
+</html>
