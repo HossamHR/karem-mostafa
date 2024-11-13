@@ -3,43 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extract PDF Content</title>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <title>Responsive Image</title>
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fff; /* Optional: background color */
+        }
+    </style>
 </head>
 <body>
-    <h2>PDF Content</h2>
-    <div id="pdf-content"></div>
-
-    <script>
-        const url = 'https://karem-mostafa-cv.hossamhr.com/cv/cv.pdf'; // Replace with the path to your PDF file
-
-        // Set the worker to load the PDF.js library
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
-
-        // Load the PDF
-        pdfjsLib.getDocument(url).promise.then(function(pdf) {
-            let pdfContent = '';
-
-            // Loop through each page
-            const numPages = pdf.numPages;
-            for (let i = 1; i <= numPages; i++) {
-                pdf.getPage(i).then(function(page) {
-                    page.getTextContent().then(function(textContent) {
-                        textContent.items.forEach(function(item) {
-                            pdfContent += item.str + ' ';
-                        });
-
-                        // Append to the div after processing the last page
-                        if (i === numPages) {
-                            document.getElementById('pdf-content').textContent = pdfContent;
-                        }
-                    });
-                });
-            }
-        }).catch(function(error) {
-            console.error('Error loading PDF: ', error);
-            document.getElementById('pdf-content').textContent = 'Error loading PDF.';
-        });
-    </script>
+    <center>
+        <img src="cv.png" alt="CV Image">
+    </center>
 </body>
 </html>
