@@ -1,50 +1,44 @@
-<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Viewer</title>
-    <style>
-        #pdf-canvas {
-            border: 1px solid black;
-            width: 100%;
-            max-width: 800px;
-        }
-    </style>
+    <title>Extract PDF Content</title>
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 </head>
 <body>
-    <h2>PDF Viewer</h2>
-    <canvas id="pdf-canvas"></canvas>
+    <h2>PDF Content</h2>
+    <div id="pdf-content"></div>
 
     <script>
-        // Specify the URL of the PDF
-        const url = 'https://pdfdrive.com.co/wp-content/pdfh/How_to_Day_Trade_for_a_Living-PDFdrive.com.co.pdf';
+        const url = 'cv.pdf'; // Replace with the path to your PDF file
 
-        // Load the PDF.js library
-        const pdfjsLib = window['pdfjs-dist/build/pdf'];
+        // Set the worker to load the PDF.js library
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
 
-        // Load and render the PDF
+        // Load the PDF
         pdfjsLib.getDocument(url).promise.then(function(pdf) {
-            // Fetch the first page
-            pdf.getPage(1).then(function(page) {
-                const scale = 1.5;
-                const viewport = page.getViewport({ scale: scale });
+            let pdfContent = '';
 
-                // Prepare canvas using PDF page dimensions
-                const canvas = document.getElementById('pdf-canvas');
-                const context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
+            // Loop through each page
+            const numPages = pdf.numPages;
+            for (let i = 1; i <= numPages; i++) {
+                pdf.getPage(i).then(function(page) {
+                    page.getTextContent().then(function(textContent) {
+                        textContent.items.forEach(function(item) {
+                            pdfContent += item.str + ' ';
+                        });
 
-                // Render the page into the canvas
-                const renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                page.render(renderContext);
-            });
+                        // Append to the div after processing the last page
+                        if (i === numPages) {
+                            document.getElementById('pdf-content').textContent = pdfContent;
+                        }
+                    });
+                });
+            }
+        }).catch(function(error) {
+            console.error('Error loading PDF: ', error);
+            document.getElementById('pdf-content').textContent = 'Error loading PDF.';
         });
     </script>
 </body>
